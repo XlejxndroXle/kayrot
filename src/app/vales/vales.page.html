@@ -1,0 +1,31 @@
+<ion-header >
+  <ion-toolbar >
+    <ion-item lines="none">
+      <ion-title>Vales</ion-title>
+      <ion-item >
+        <ion-icon button=""  slot="end" name="search-outline"></ion-icon>
+      </ion-item>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="menu"></ion-back-button>
+      </ion-buttons>
+    </ion-item>
+   
+  </ion-toolbar>  
+</ion-header>
+ 
+<ion-content>
+  <ion-item color="none" lines="none" > 
+    <h5><b>Detalles del Vale</b></h5>
+  </ion-item>
+  <ion-card>
+    <ion-item lines="full">
+      <p slot="end">No. Vale <br> <b>|17</b></p>
+      <ion-icon button="" slot="end" name="add-outline" [routerLink]="['/detalle-vale']"  routerLinkActive="router-link-active"></ion-icon>
+      <p>Fecha de inicio<br> 
+        2022-Marzo-02 <br><br> 
+        Fecha Final <br>
+        2022-Abril-02</p>
+    </ion-item>
+
+</ion-card>
+</ion-content>

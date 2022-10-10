@@ -1,0 +1,87 @@
+<ion-header >
+  <ion-toolbar >
+    <ion-item lines="none">
+      <ion-title>Detalle de Paquetes</ion-title>
+      <ion-item >
+        <ion-icon button=""  slot="end" name="search-outline"></ion-icon>
+      </ion-item>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="paquetes"></ion-back-button>
+      </ion-buttons>
+    </ion-item>
+   
+  </ion-toolbar>  
+</ion-header>
+<ion-content>
+  <ion-item  color="none" lines="none" > 
+    <h5><b>Descripción del paquete</b></h5>
+  </ion-item> 
+  <ion-card>
+    <ion-item lines="full">
+      <p slot="end">No. Pedido <br> <b>|21</b></p>
+      <ion-icon button="" slot="end" name="add-outline" [routerLink]="['/detalle-paquete']"  routerLinkActive="router-link-active"></ion-icon>
+      <p>Fecha de inicio<br> 
+        2022-Marzo-02 <br><br> 
+        Fecha Final <br>
+        2022-Abril-02</p>
+    </ion-item>
+    <ion-item lines="none">
+      <p><b>Descripción</b></p>
+      <p slot="end">Paquete prod escritos</p>
+    </ion-item>
+</ion-card>
+<ion-item  color="none" lines="none" > 
+  <h5><b>Descripción del paquete</b></h5>
+</ion-item> 
+
+  <!-- CANTIDAD A PAGAR -->
+
+<ion-card>
+  <ion-item lines="none">
+    <p>Total sin descuento</p>
+    <p slot="end">$00.00</p>
+  </ion-item>
+  <ion-item lines="full">
+    <p>Descuento total</p>
+    <p slot="end">$00.00</p>
+  </ion-item>
+  <ion-item lines="none">
+    <p><b>Descuento total</b></p>
+    <p slot="end"><b>$30.00</b></p>
+  </ion-item>
+</ion-card>
+
+  <!--PRODUCTOS AGREAGOS AL PAQUETE-->
+  <ion-item  color="none" lines="none" > 
+    <h5><b>Productos agregados al paquete </b></h5>
+  </ion-item> 
+  <ion-card>
+    <ion-item  lines="full">
+      <ion-grid>
+        <p><b><u>01 RED FUSION SOMBRAS</u></b></p>
+        <ion-row class="ion-text-center ion-no-padding">
+          <ion-col>
+            <br><b>Unidad:</b> 
+            <br><b>1</b>
+          </ion-col>
+          <ion-col>
+            Descuento
+            <br>
+            <br>$3.00 
+          </ion-col>
+          <ion-col>
+            P.Unitario
+            <br>
+            <br>$30.00
+          </ion-col>
+          <ion-col>
+            Importe
+            <br>
+            <br>$27.00
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>      
+  </ion-card>
+
+</ion-content>
