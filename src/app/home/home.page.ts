@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { ToastController, NavController } from '@ionic/angular';
 //IMPORTAMOS LAS RUTAS
 import { Router } from '@angular/router';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 
 
@@ -25,7 +26,7 @@ export class HomePage {
   formLogin:FormGroup;
 
   //CONSTRUCTORES  
-  constructor(private fb:FormBuilder, private httpCliente:HttpClient, private toastController: ToastController, private router: Router) {
+  constructor(private iab:InAppBrowser,private fb:FormBuilder, private httpCliente:HttpClient, private toastController: ToastController, private router: Router) {
     this.crearFormulario();
   }
     
@@ -57,8 +58,9 @@ export class HomePage {
         this.httpCliente.post(environment.api_url+ 'CrudUsuarios/autenticar', formData  ).subscribe(
           (data:any [])=> {
             localStorage.setItem('jwt-admin', data['jwt']);
+            
               this.router.navigate(['/menu']);
-              
+               
           },
             error =>{
               // eslint-disable-next-line @typescript-eslint/quotes

@@ -16,10 +16,6 @@ const routes: Routes = [
     loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
   },
   {
-    path: 'pagos-adeudos',
-    loadChildren: () => import('./pagos-adeudos/pagos-adeudos.module').then( m => m.PagosAdeudosPageModule)
-  },
-  {
     path: 'promociones',
     loadChildren: () => import('./promociones/promociones.module').then( m => m.PromocionesPageModule)
   },

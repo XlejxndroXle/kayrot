@@ -2,7 +2,7 @@
   <ion-toolbar >
     <ion-item lines="none">
       <ion-title>P. Comerciante</ion-title>
-      <ion-item >
+      <ion-item  lines="none">
         <ion-icon button="" (click)="onClick()" slot="end" name="search-outline"></ion-icon>
       </ion-item>
       <ion-buttons slot="start">
@@ -13,8 +13,8 @@
   </ion-toolbar>  
 </ion-header>
 
-<ion-content>
-  <ion-card>
+<ion-content >
+  <ion-card >
     <ion-item  lines="none">
       <ion-icon button="" slot="end" name="ellipsis-horizontal-outline" [routerLink]="['/detalle-pedido-sub']"  routerLinkActive="router-link-active"></ion-icon>
       <h6>#Pedido 000 - Status</h6>

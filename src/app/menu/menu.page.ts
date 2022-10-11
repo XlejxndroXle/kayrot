@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { ActionSheetController } from '@ionic/angular';
 import { Router } from '@angular/router';
 //import { AutentificarService } from '../services/autentificar.service';
 import { ToastController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { PermisosService } from '../services/permisos.service';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 
 @Component({
   selector: 'app-menu',
@@ -12,16 +15,22 @@ import { PermisosService } from '../services/permisos.service';
   styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage implements OnInit {
+  handlerMessage = '';
+  roleMessage = '';
   result: string;
   cordova;
   tipoUsuario:any;
-  constructor(private permisos:PermisosService, private httpClient: HttpClient, private toastController: ToastController, private actionSheetCtrl: ActionSheetController, private router: Router) { 
+  idUsuario:any;
+  idCliente:any;
+  constructor(private alertController:AlertController, private iab: InAppBrowser, private permisos:PermisosService, private httpClient: HttpClient, private toastController: ToastController, private actionSheetCtrl: ActionSheetController, private router: Router) { 
     
   } 
 
    async ngOnInit() {
     this.tipoUsuario=await this.permisos.getTipoUsuario();
-    console.log("tipo:"+this.tipoUsuario);
+    this.idUsuario=await this.permisos.getIdUsuario();
+    this.idCliente=await this.permisos.getIdCliente(this.idUsuario);
+    //console.log("tipo:"+this.tipoUsuario);
   }
   
   logout() {
@@ -80,5 +89,46 @@ export class MenuPage implements OnInit {
   // CIERRE DE ACTION SHEET
 
 
+// MENSAJE
+async presentAlert() {
+  const alert = await this.alertController.create({
+    header: '¿Desea descargar sus pagos y adeudos?',
+    buttons: [
+      {
+        text: 'Cancelar',
+        role: 'cancel',
+        handler: () => {
+          this.handlerMessage = 'Alert canceled';
+        },
+      },
+      {
+        text: 'Aceptar',
+        role: 'confirm',
+        handler: () => {
+          this.descargaPagos();
+        },
+      },
+    ],
+  });
+
+  await alert.present();
+
+  const { role } = await alert.onDidDismiss();
+  this.roleMessage = `Dismissed with role: ${role}`;
+}
+
+
+
+//FIN MENSAJE
+
+
+
+  descargaPagos(){
+   // console.log("idUsuario"+this.idUsuario);
+    //console.log("idCliente"+this.idCliente);
+    //var idCliente;
+
+    this.iab.create(`https://kayrot.com.mx/kayrot/index.php/CrudClientes/detallesDePedidosDeClientesPDF/`+this.idCliente,`_system` ) ;
+  }
 
 }

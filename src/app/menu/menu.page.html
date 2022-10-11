@@ -39,14 +39,15 @@
  
       <!-- MENU DEL USUARIO -->
       <ion-content [fullscreen]="true" class="ion-padding ion-text-center">
-        <h1>{{tipoUsuario}}</h1>
-    <div *ngIf="this.tipoUsuario==='1'">
+        <!-- <h1>{{tipoUsuario}}</h1> -->
+    <div *ngIf="this.tipoUsuario==='4'">
     <!-- PRIMER BOTON -->
       <div class="ops">
           <ion-row  justify-content-center >
               <ion-col color="none" lines="none">
               <ion-item class="" color="none" lines="none">
-                      <img [routerLink]="['/pagos-adeudos']" src="../../assets/iconos/pagos.png"  routerLinkActive="router-link-active" />
+                      <!-- <img  (click)="descargaPagos()" (click)="presentAlert()" src="../../assets/iconos/pagos.png"/> -->
+                      <img   (click)="presentAlert()" src="../../assets/iconos/pagos.png"/>
                </ion-item>
               </ion-col>
       <!-- SEGUNDO BOTON -->
@@ -158,7 +159,7 @@
       
       </div>
         <!-- USUARIO NO ENCONTRADO -->
-      <div *ngIf="this.tipoUsuario==='4'">
+      <div *ngIf="this.tipoUsuario==='1' || this.tipoUsuario>='5'">
        
         <div class="error">
           <img src="../assets/img/error.png" alt="">
